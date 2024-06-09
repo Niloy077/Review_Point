@@ -1,0 +1,29 @@
+body{
+	background-color: cornsilk;
+	font-family: serif;
+}
+
+
+h1{
+	text-align: center;
+}
+.image{
+	position: relative;
+	left: 470px;
+}
+p{
+	text-align: left;
+	font-size: 18px;
+}
+.free{
+
+	position: relative;;
+	padding: 10px 30px;
+	text-decoration: none;
+	border: 1px solid orange;
+	display: inline-block;
+	color: #262626;
+	background-color: coral;
+	font-size: 27px;
+	border-radius: 5px;
+}

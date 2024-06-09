@@ -1,0 +1,227 @@
+h3{
+	position: relative;
+	left: 35%;
+	top: 10px;
+	padding: 10px 30px;
+	text-decoration: none;
+	border: 1px solid orange;
+	border-radius: 20px;
+	display: inline-block;
+	color: black;
+	background: cornsilk;
+	font-size: 20px;
+}
+.ad {
+	position: relative;
+	top: 60px;
+	font-size: 23px;
+	margin-left: 20px;
+	color: blue;
+
+}
+
+body{
+		background-image: linear-gradient(#12CBC4,#0652DD,#12CBC4);
+
+}
+
+.logo{
+	padding-left: 80px;
+	padding-top: 50px;
+}
+#first{
+	font-family: garamond;
+	font-size: 35px;
+	color: #0f2557;
+}
+#sub{
+	font-family: times;
+	font-size: 19px;
+	color: #262626;
+}
+#container{
+	overflow: visible;
+}
+
+ul{
+	margin: 0px;
+	padding: 0px;
+}
+ul{
+ 	float: left;
+ 	list-style-type: none;
+ 	
+ }
+ #fix{
+ 	width: 200px;
+ }
+
+ ul li{
+ 	display: inline-block;
+ 	width: 120px;
+ 	height: 50px;
+ 	line-height: 50px;
+ 	float: left;
+ 	border: 1px solid black;
+ 	text-align: center;
+ 	overflow: visible;
+ 	
+ }
+
+ ul li a{
+ 	text-decoration: none;
+ 	color: black;
+ 	transition: 0.3s ease;
+ 	font-size: 19px;
+ 	display: block;
+ 	font-size: 20px;
+ 	font-family: monospace;
+ 	font-weight: 200;
+ 	overflow: visible;
+ }
+ ul li a:hover{
+ 	background: linear-gradient(-45deg, #EE7752, #E73c7e);
+ 	color: #000;
+ 	overflow: visible;
+ }
+ul li ul li{
+	display: none;
+}
+ul li:hover ul li{
+	display: block;
+
+}
+.search{
+	margin-top: 15px;
+	float: right;
+	margin-right: 170px;
+}
+input[type=text]{
+	padding: 7px;
+	font-size: 16px;
+	font-family: sans-serif;
+}
+button{
+	float: right;
+	background-color: orange;
+	color: white;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	position: relative;
+	padding: 9px;
+	font-family: sans-serif;
+	border:none;
+	font-size: 16px;
+}
+.second{
+	font-weight: 200;
+	font-size: 40px;
+	color: white;
+	text-align: left;
+	letter-spacing: 1px;
+	padding-left: 500px;
+	padding-bottom:50px; 
+	padding-top: 100px;
+	text-decoration: none;
+	font-family: 'Fort-Book';
+
+}
+.second a:hover{
+	background: linear-gradient(-45deg, #EE7752, #E73c7e);
+	border: 1px solid white;
+}
+h2 .second{
+	border: 1px solid white;
+	
+	padding: 15px;
+}
+.third{
+	font-weight: 200;
+	font-size: 40px;
+	color: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+	text-align: left;
+	letter-spacing: 1px;
+	padding-left: 440px;
+	text-decoration: none;
+}
+.third a:hover{
+	background: linear-gradient(-45deg, #EE7752, #E73c7e);
+	border: 1px solid white;
+}
+h2 .third{
+	border: 1px solid white;
+	border-left: 10px;
+	border-right: 10px;
+	padding: 5px;
+}
+.b1{
+	position: absolute;
+	left: 10%;
+	top: 15%;
+	border: 2px solid black;
+	box-shadow: 10px 20px 40px;
+}
+
+.b1:hover{
+	box-shadow: 1px 2px 4px;
+}
+.text{
+	text-align: center;
+	padding: 30px 0;
+	font-family: 'ubuntu' , sans-serif;
+	display: flex;
+	justify-content: center;
+	color: white;
+	background-color: #262626;
+}
+
+.info{
+	width: 100%;
+	height: 200px;
+	border: 1px solid red;
+	background-color: cornsilk;
+	opacity: 0.7;
+}
+.info p{
+	text-align: left;
+	font-size: 20px;
+}
+.box{
+width: 1000px;
+height: 400px;
+margin: 0 auto;
+}
+
+
+.article{
+    width: 280px;
+    height: 350px;
+    background-color: coral;
+    float: left;
+    border-radius: 20px;
+     margin: 10px;
+}
+ .in{
+	position: relative;
+	left:1px;
+	top: 10px;
+	text-decoration: none;
+	border: 1px solid orange;
+	border-radius: 20px;
+	display: inline-block;
+	color: black;
+	font-size: 20px;
+}
+.free{
+
+	position: relative;
+	left: 30%;
+	padding: 10px 30px;
+	text-decoration: none;
+	border: 1px solid orange;
+	display: inline-block;
+	color: #262626;
+	background: cornsilk;
+	font-size: 27px;
+	border-radius: 5px;
+}

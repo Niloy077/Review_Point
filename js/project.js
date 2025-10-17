@@ -202,46 +202,48 @@ let bookData = JSON.parse(localStorage.getItem('bookData')) || {
   ]
 };
 
+// ... (bookData remains unchanged) ...
+
 // Function to populate book grids dynamically with remove buttons
-function populateGrids() {
-  Object.keys(bookData).forEach(cat => {
+function populateGrids(data = bookData) {
+  Object.keys(data).forEach(cat => {
     const grid = document.querySelector(`#${cat} .book-grid`);
     if (grid) {
       grid.innerHTML = '';
-      bookData[cat].forEach((book, index) => {
+      data[cat].forEach((book, index) => {
         const card = document.createElement('div');
         card.className = 'book-card';
         
-        // Main image
         const img = document.createElement('img');
         img.src = book.img;
         img.alt = book.title;
+        if (!img.src) console.warn(`Image not found for ${book.title}`);
         card.appendChild(img);
 
-        // Remove button overlay
         const removeBtn = document.createElement('button');
         removeBtn.innerHTML = '×';
         removeBtn.className = 'remove-btn';
         removeBtn.title = 'Remove book';
         removeBtn.onclick = (e) => {
-          e.stopPropagation(); // Prevent triggering image click
+          e.stopPropagation();
           if (confirm(`Remove "${book.title}" by ${book.author}?`)) {
             bookData[cat].splice(index, 1);
             localStorage.setItem('bookData', JSON.stringify(bookData));
-            populateGrids(); // Refresh grid
+            populateGrids();
           }
         };
         card.appendChild(removeBtn);
 
         grid.appendChild(card);
 
-        // Book modal click (on image only, not remove button)
         img.addEventListener('click', () => {
           modalImg.src = book.img;
           modalTitle.textContent = book.title;
           modalAuthor.textContent = `Author: ${book.author}`;
           modalDesc.textContent = book.desc;
           modal.classList.remove('hidden');
+          modal.style.opacity = '0';
+          setTimeout(() => modal.style.opacity = '1', 10);
         });
       });
     }
@@ -251,15 +253,39 @@ function populateGrids() {
 // Populate on load
 populateGrids();
 
+// Search functionality
+const searchForm = document.getElementById('searchForm');
+const searchInput = document.getElementById('searchInput');
+
+function performSearch(e) {
+  e.preventDefault(); // Prevent form submission
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  if (!searchTerm) {
+    populateGrids();
+    return;
+  }
+
+  const filteredData = {};
+  Object.keys(bookData).forEach(cat => {
+    filteredData[cat] = bookData[cat].filter(book =>
+      book.title.toLowerCase().includes(searchTerm) ||
+      book.author.toLowerCase().includes(searchTerm)
+    );
+  });
+  populateGrids(filteredData);
+}
+
+// Event listeners for search
+searchForm.addEventListener('submit', performSearch);
+searchInput.addEventListener('input', performSearch);
+
 // Navigation toggling
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
     const target = document.getElementById(link.dataset.target);
-    if (target) {
-      target.classList.add('active');
-    }
+    if (target) target.classList.add('active');
   });
 });
 
@@ -271,10 +297,16 @@ const modalAuthor = document.getElementById('modal-author');
 const modalDesc = document.getElementById('modal-desc');
 const closeBtn = document.getElementById('close-btn');
 
-// Close view modal
-closeBtn.onclick = () => modal.classList.add('hidden');
+// Close view modal with fade-out
+closeBtn.onclick = () => {
+  modal.style.opacity = '0';
+  setTimeout(() => modal.classList.add('hidden'), 300);
+};
 modal.onclick = e => {
-  if (e.target === modal) modal.classList.add('hidden');
+  if (e.target === modal) {
+    modal.style.opacity = '0';
+    setTimeout(() => modal.classList.add('hidden'), 300);
+  }
 };
 
 // Add book modal elements
@@ -283,13 +315,23 @@ const addModal = document.getElementById('add-modal');
 const addClose = document.getElementById('add-close-btn');
 const addForm = document.getElementById('add-form');
 
-// Open add modal
-addBtn.addEventListener('click', () => addModal.classList.remove('hidden'));
+// Open add modal with fade-in
+addBtn.addEventListener('click', () => {
+  addModal.classList.remove('hidden');
+  addModal.style.opacity = '0';
+  setTimeout(() => addModal.style.opacity = '1', 10);
+});
 
-// Close add modal
-addClose.onclick = () => addModal.classList.add('hidden');
+// Close add modal with fade-out
+addClose.onclick = () => {
+  addModal.style.opacity = '0';
+  setTimeout(() => addModal.classList.add('hidden'), 300);
+};
 addModal.onclick = e => {
-  if (e.target === addModal) addModal.classList.add('hidden');
+  if (e.target === addModal) {
+    addModal.style.opacity = '0';
+    setTimeout(() => addModal.classList.add('hidden'), 300);
+  }
 };
 
 // Handle add form submission
@@ -309,9 +351,12 @@ addForm.addEventListener('submit', e => {
       bookData[cat].push(newBook);
       localStorage.setItem('bookData', JSON.stringify(bookData));
       populateGrids();
-      addModal.classList.add('hidden');
-      addForm.reset();
-      alert('Book added successfully!');
+      addModal.style.opacity = '0';
+      setTimeout(() => {
+        addModal.classList.add('hidden');
+        addForm.reset();
+        alert('Book added successfully!');
+      }, 300);
     };
     reader.readAsDataURL(file);
   } else {

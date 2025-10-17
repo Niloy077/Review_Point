@@ -256,28 +256,57 @@ populateGrids();
 // Search functionality
 const searchForm = document.getElementById('searchForm');
 const searchInput = document.getElementById('searchInput');
+const suggestionsList = document.getElementById('search-suggestions');
 
-function performSearch(e) {
-  e.preventDefault(); // Prevent form submission
-  const searchTerm = searchInput.value.toLowerCase().trim();
-  if (!searchTerm) {
-    populateGrids();
-    return;
-  }
+function updateSuggestions() {
+  const term = searchInput.value.toLowerCase().trim();
+  suggestionsList.innerHTML = '';
+  if (!term) return;
 
-  const filteredData = {};
+  const matches = [];
   Object.keys(bookData).forEach(cat => {
-    filteredData[cat] = bookData[cat].filter(book =>
-      book.title.toLowerCase().includes(searchTerm) ||
-      book.author.toLowerCase().includes(searchTerm)
-    );
+    bookData[cat].forEach(book => {
+      if (book.title.toLowerCase().includes(term) || book.author.toLowerCase().includes(term)) {
+        matches.push({ ...book, category: cat });
+      }
+    });
   });
-  populateGrids(filteredData);
-}
 
-// Event listeners for search
-searchForm.addEventListener('submit', performSearch);
-searchInput.addEventListener('input', performSearch);
+  if (matches.length === 0) {
+    const li = document.createElement('li');
+    li.textContent = 'No results found';
+    li.style.cursor = 'default';
+    suggestionsList.appendChild(li);
+  } else {
+    matches.forEach(book => {
+      const li = document.createElement('li');
+      li.textContent = book.title;
+      li.addEventListener('click', () => {
+        searchInput.value = '';
+        suggestionsList.innerHTML = '';
+        
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        const section = document.getElementById(book.category);
+        if (section) section.classList.add('active');
+
+        const cards = section.querySelectorAll('.book-card img');
+        cards.forEach(img => {
+          if (img.alt === book.title) {
+            img.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            img.style.border = '3px solid orange';
+            setTimeout(() => img.style.border = '2px solid #ddd', 1500);
+          }
+        });
+      });
+      suggestionsList.appendChild(li);
+    });
+  }
+}
+searchInput.addEventListener('input', updateSuggestions);
+searchForm.addEventListener('submit', e => e.preventDefault());
+document.addEventListener('click', e => {
+  if (!searchForm.contains(e.target)) suggestionsList.innerHTML = '';
+});
 
 // Navigation toggling
 document.querySelectorAll('.nav-link').forEach(link => {

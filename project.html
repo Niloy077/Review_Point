@@ -12,8 +12,8 @@
     <!-- Header -->
     <header class="site-header">
       <div class="logo-title">
-        <img src="images/reviewpoint.png" alt="Review Point Logo" class="logo-img" />
-        <h1>Review Point</h1>
+        <img src="images/logo.jpg" alt="Review Point Logo" class="logo-img" />
+        <h1>Fiction Review</h1>
       </div>
 
       <div class="header-right">
@@ -38,52 +38,35 @@
         </ul>
       </aside>
 
-<!-- Dynamic Main Section -->
-<section class="main-content">
-    <div id="new-arrivals" class="content-section active">
-      <h2>New Arrivals</h2>
-      <div class="book-grid">
-        <div class="book-card"><img src="images/b1.jpeg" alt="Book 1"></div>
-        <div class="book-card"><img src="images/b2.jpeg" alt="Book 2"></div>
-        <div class="book-card"><img src="images/b3.jpeg" alt="Book 3"></div>
-        <div class="book-card"><img src="images/b4.jpeg" alt="Book 4"></div>
-      </div>
-    </div>
-  
-    <div id="most-popular" class="content-section">
-      <h2>Most Popular</h2>
-      <div class="book-grid">
-        <div class="book-card"><img src="images/mp1.jpg" alt="Book 1"></div>
-        <div class="book-card"><img src="images/mp2.jpg" alt="Book 2"></div>
-        <div class="book-card"><img src="images/mp3.jpg" alt="Book 3"></div>
-        <div class="book-card"><img src="images/mp4.jpg" alt="Book 4"></div>
-      </div>
-    </div>
-  
-    <div id="nobel-prize" class="content-section">
-      <h2>Nobel Prize Winners</h2>
-      <div class="book-grid">
-        <div class="book-card"><img src="images/n1.jpg" alt="Nobel 1"></div>
-        <div class="book-card"><img src="images/n2.jpg" alt="Nobel 2"></div>
-      </div>
-    </div>
-  
-    <div id="man-booker" class="content-section">
-      <h2>Man Booker Prize Winners</h2>
-      <div class="book-grid">
-        <div class="book-card"><img src="images/mb3.jpg" alt="MB3"></div>
-        <div class="book-card"><img src="images/mb4.jpg" alt="MB4"></div>
-        <div class="book-card"><img src="images/mb6.jpg" alt="MB6"></div>
-      </div>
-    </div>
-  </section>
-  
+      <!-- Dynamic Main Section -->
+      <section class="main-content">
+        <div id="new-arrivals" class="content-section active">
+          <h2>New Arrivals</h2>
+          <div class="book-grid"></div>
+        </div>
+      
+        <div id="most-popular" class="content-section">
+          <h2>Most Popular</h2>
+          <div class="book-grid"></div>
+        </div>
+      
+        <div id="nobel-prize" class="content-section">
+          <h2>Nobel Prize Winners</h2>
+          <div class="book-grid"></div>
+        </div>
+      
+        <div id="man-booker" class="content-section">
+          <h2>Man Booker Prize Winners</h2>
+          <div class="book-grid"></div>
+        </div>
+      </section>
 
       <!-- Right Sidebar -->
       <aside class="sidebar sidebar-right">
         <h3>Promotions</h3>
         <a href="ad.html"><img src="images/img1.jpg" alt="Ad" class="ad-img" /></a>
         <a href="register1.html" class="free-books-btn">Read Our Books Free</a>
+        <button id="add-book-btn" class="free-books-btn">Add New Book</button>
       </aside>
     </main>
 
@@ -101,6 +84,29 @@
       <h2 id="modal-title"></h2>
       <h4 id="modal-author"></h4>
       <p id="modal-desc"></p>
+    </div>
+  </div>
+
+  <!-- Add book modal -->
+  <div id="add-modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="add-close-btn">&times;</span>
+      <h2>Add New Book</h2>
+      <form id="add-form">
+        <label>Title: <input type="text" id="add-title" required></label>
+        <label>Author: <input type="text" id="add-author" required></label>
+        <label>Description: <textarea id="add-desc" required></textarea></label>
+        <label>Category:
+          <select id="add-category" required>
+            <option value="new-arrivals">New Arrivals</option>
+            <option value="most-popular">Most Popular</option>
+            <option value="nobel-prize">Nobel Prize</option>
+            <option value="man-booker">Man Booker Prize</option>
+          </select>
+        </label>
+        <label>Image: <input type="file" id="add-image" accept="image/*" required></label>
+        <button type="submit">Add Book</button>
+      </form>
     </div>
   </div>
 

@@ -45,6 +45,7 @@ async function loadOLSection(sectionId, query) {
 
 // Load all sections
 loadNewArrivals();
+loadOLSection('new-arrivals', 'fiction+2025');
 loadOLSection('most-popular', 'bestseller+fiction+2025');
 loadOLSection('nobel-prize', 'nobel+prize+literature+fiction');
 loadOLSection('man-booker', 'man+booker+prize+fiction');

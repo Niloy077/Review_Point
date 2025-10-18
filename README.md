@@ -35,5 +35,5 @@ To run this project locally, follow these steps:
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Niloy077/Review_Point.git
-   cd review-point
+   cd REVIEW_POINT
    open index.html in your browser

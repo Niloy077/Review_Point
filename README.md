@@ -18,16 +18,16 @@ Review Point is a single-page web application built with HTML, CSS, and JavaScri
 ## Screenshots
 
 ### Home Page
-![Home Page](<images\home.png>)
+![Home Page](<images/home.png>)
 
 ### Search Suggestions
-![Search Suggestions](<images\search.png>)
+![Search Suggestions](<images/search.png>)
 
 ### Book Modal View
-![Book Modal](<images\book_view.png>)
+![Book Modal](<images/book_view.png>)
 
 ### Add Book Modal
-![Add Book Modal](<images\add_modal.png>)
+![Add Book Modal](<images/add_modal.png>)
 
 ## Installation
 To run this project locally, follow these steps:
